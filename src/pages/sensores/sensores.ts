@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { SnsTemperatura } from "../sns-temperatura/sns-temperatura";
+import { SnsHumedad } from "../sns-humedad/sns-humedad";
+
 /**
  * Generated class for the Sensores page.
  *
@@ -19,6 +22,15 @@ export class Sensores {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Sensores');
+  }
+
+  irPaginaSensor(numSensor){
+    if(numSensor == 1){
+      this.navCtrl.push(SnsTemperatura)  
+    }
+    if(numSensor == 2){
+      this.navCtrl.push(SnsHumedad)  
+    }    
   }
 
 }

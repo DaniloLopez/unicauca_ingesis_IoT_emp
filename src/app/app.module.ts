@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+//paginas de menu
 import { MyApp } from './app.component';
 import { Inicio } from '../pages/inicio/inicio';
 import { Apagar } from "../pages/apagar/apagar";
@@ -11,6 +12,10 @@ import { Graficas } from "../pages/graficas/graficas";
 import { Sensores } from "../pages/sensores/sensores";
 import { Temporizador } from "../pages/temporizador/temporizador";
 import { Acerca } from "../pages/acerca/acerca";
+
+//paginas para cada sensor
+import { SnsTemperatura } from "../pages/sns-temperatura/sns-temperatura";
+import { SnsHumedad } from "../pages/sns-humedad/sns-humedad";
 
 @NgModule({
   declarations: [
@@ -20,7 +25,9 @@ import { Acerca } from "../pages/acerca/acerca";
     Graficas,
     Sensores,
     Temporizador,
-    Acerca    
+    Acerca,    
+    SnsTemperatura,
+    SnsHumedad
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,9 @@ import { Acerca } from "../pages/acerca/acerca";
     Graficas,
     Sensores,
     Temporizador,
-    Acerca  
+    Acerca,
+    SnsTemperatura,
+    SnsHumedad
   ],
   providers: [
     StatusBar,

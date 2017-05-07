@@ -19,8 +19,7 @@ export class MyApp {
   @ViewChild('NAV') nav: Nav;
   public rootPage: any;
   //se crea un array con los atributos de las paginas que se van a usar
-  public pages: Array<{ titulo: string, componente:any, icono: string}>;
-  
+  public pages: Array<{ titulo: string, componente:any, icono: string}>;  
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     
@@ -32,7 +31,7 @@ export class MyApp {
       {titulo : 'Sensores' ,      componente: Sensores,     icono:'wifi'},
       {titulo : 'Graficas' ,      componente: Graficas,     icono:'stats'},
       {titulo : 'Temporizador' ,  componente: Temporizador, icono:'time'},
-      {titulo : 'Acerca de' ,     componente: Acerca,       icono:'information-circle'},
+      {titulo : 'Acerca de' ,     componente: Acerca,       icono:'information-circle'},      
     ];
 
     platform.ready().then(() => {
