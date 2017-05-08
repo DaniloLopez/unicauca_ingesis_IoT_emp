@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { SnsTemperatura } from "../sns-temperatura/sns-temperatura";
 import { SnsHumedad } from "../sns-humedad/sns-humedad";
+import { SnsFlujoagua } from "../sns-flujoagua/sns-flujoagua";
 
 /**
  * Generated class for the Sensores page.
@@ -30,6 +31,9 @@ export class Sensores {
     }
     if(numSensor == 2){
       this.navCtrl.push(SnsHumedad)  
+    }    
+    if(numSensor == 3){
+      this.navCtrl.push(SnsFlujoagua)  
     }    
   }
 

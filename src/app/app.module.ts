@@ -16,6 +16,7 @@ import { Acerca } from "../pages/acerca/acerca";
 //paginas para cada sensor
 import { SnsTemperatura } from "../pages/sns-temperatura/sns-temperatura";
 import { SnsHumedad } from "../pages/sns-humedad/sns-humedad";
+import { SnsFlujoagua } from "../pages/sns-flujoagua/sns-flujoagua";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SnsHumedad } from "../pages/sns-humedad/sns-humedad";
     Temporizador,
     Acerca,    
     SnsTemperatura,
-    SnsHumedad
+    SnsHumedad,
+    SnsFlujoagua
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { SnsHumedad } from "../pages/sns-humedad/sns-humedad";
     Temporizador,
     Acerca,
     SnsTemperatura,
-    SnsHumedad
+    SnsHumedad,
+    SnsFlujoagua
   ],
   providers: [
     StatusBar,
