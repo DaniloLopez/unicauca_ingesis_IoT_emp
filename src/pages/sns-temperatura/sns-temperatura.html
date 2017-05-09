@@ -15,13 +15,13 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-label color="primary">Temperatura:</ion-label>
+      <ion-label color="primary">Temperatura</ion-label>
     </ion-item>    
   </ion-list>
 
   <rango-sensor></rango-sensor>
 
-  <grafica [name_sensor]="Temperatura" [name_var]="Tiempo" [sensor_id]="id_sensor">
+  <grafica [name_sensor]="Temperatura" [name_var]="Tiempo" [sensor_id]="id_sensor" [unidades] = "minutos">
   </grafica>
 
 </ion-content>

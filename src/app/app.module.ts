@@ -21,6 +21,9 @@ import { SnsFlujoagua } from "../pages/sns-flujoagua/sns-flujoagua";
 import { Grafica } from "../components/grafica/grafica";
 import { RangoSensor } from "../components/rango-sensor/rango-sensor";
 
+import { ChartModule } from "angular2-highcharts";
+import * as highcharts from 'Highcharts';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -38,7 +41,8 @@ import { RangoSensor } from "../components/rango-sensor/rango-sensor";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ChartModule.forRoot(highcharts)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -18,31 +18,31 @@
 
 <ion-content padding>
   <img src="" alt=""/>
-  <h2>Monitoreo de laboratorio portatil</h2>  
+  <h2>Estación de Monitoreo Portatil</h2>  
   <ion-grid>
     <ion-row>
-      <ion-col col-6 col-sm-12 col-md-9 col-lg-6 col-xl-3>
-        <button ion-button full icon-left color="dark" (click)="irPagina(1)">
+      <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+        <button class="boton_inicio" ion-button full icon-left color="dark" (click)="irPagina(1)">
           <ion-icon name="power"></ion-icon>
           apagar
         </button>
       </ion-col>
-      <ion-col col-6 col-sm-12 col-md-9 col-lg-6 col-xl-3>
-        <button ion-button full icon-left color="dark" (click)="irPagina(2)">
+      <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+        <button class="boton_inicio" ion-button full icon-left color="dark" (click)="irPagina(2)">
           <ion-icon name="wifi"></ion-icon>
           sensores
         </button>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-6 col-sm-12 col-md-9 col-lg-6 col-xl-3>
-        <button ion-button full icon-left color="dark" (click)="irPagina(3)">
+      <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+        <button class="boton_inicio" ion-button full icon-left color="dark" (click)="irPagina(3)">
           <ion-icon name="stats"></ion-icon>
           graficas
         </button>
       </ion-col>
-      <ion-col col-6 col-sm-12 col-md-9 col-lg-6 col-xl-3>
-        <button ion-button full icon-left color="dark" (click)="irPagina(4)">
+      <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+        <button class="boton_inicio" ion-button full icon-left color="dark" (click)="irPagina(4)">
           <ion-icon name="time"></ion-icon>
           temporizador
         </button>
@@ -50,3 +50,10 @@
     </ion-row>
   </ion-grid>  
 </ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Unicauca - IoT</ion-title>
+  </ion-toolbar>
+</ion-footer>
