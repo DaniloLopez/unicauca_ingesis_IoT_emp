@@ -18,6 +18,9 @@ import { SnsTemperatura } from "../pages/sns-temperatura/sns-temperatura";
 import { SnsHumedad } from "../pages/sns-humedad/sns-humedad";
 import { SnsFlujoagua } from "../pages/sns-flujoagua/sns-flujoagua";
 
+import { Grafica } from "../components/grafica/grafica";
+import { RangoSensor } from "../components/rango-sensor/rango-sensor";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -29,7 +32,9 @@ import { SnsFlujoagua } from "../pages/sns-flujoagua/sns-flujoagua";
     Acerca,    
     SnsTemperatura,
     SnsHumedad,
-    SnsFlujoagua
+    SnsFlujoagua,
+    Grafica,
+    RangoSensor
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,9 @@ import { SnsFlujoagua } from "../pages/sns-flujoagua/sns-flujoagua";
     Acerca,
     SnsTemperatura,
     SnsHumedad,
-    SnsFlujoagua
+    SnsFlujoagua,
+    Grafica,
+    RangoSensor
   ],
   providers: [
     StatusBar,
