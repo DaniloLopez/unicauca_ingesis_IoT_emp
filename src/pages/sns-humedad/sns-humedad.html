@@ -27,4 +27,11 @@
   </grafica>
   </ion-list>
 
+  <ion-item-group>
+      <ion-item-divider color="light">XML</ion-item-divider>
+      <ion-item *ngFor="let item of xmlItems">
+         {{ item.title }}
+      </ion-item>
+   </ion-item-group>
+
 </ion-content>

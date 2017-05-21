@@ -1,24 +1,28 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+//import del servicio conector
+import { EmpService } from "../../providers/emp-service";
 
-/**
- * Generated class for the SnsFlujoagua page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-sns-flujoagua',
   templateUrl: 'sns-flujoagua.html',
+  providers: [EmpService],
 })
 export class SnsFlujoagua {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private xmlItems: any;    
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public es: EmpService)
+  {
+    this.xmlItems = "aunno";
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SnsFlujoagua');
+    console.log('ionViewDidLoad SnsFlujoagua, obteniendo xml' + this.xmlItems);    
   }
-
 }

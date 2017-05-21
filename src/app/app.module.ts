@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+//providers internet
+import { HttpModule } from "@angular/http";
 
 //paginas de menu
 import { MyApp } from './app.component';
@@ -18,11 +20,17 @@ import { SnsTemperatura } from "../pages/sns-temperatura/sns-temperatura";
 import { SnsHumedad } from "../pages/sns-humedad/sns-humedad";
 import { SnsFlujoagua } from "../pages/sns-flujoagua/sns-flujoagua";
 
+//componentes
 import { Grafica } from "../components/grafica/grafica";
 import { RangoSensor } from "../components/rango-sensor/rango-sensor";
 
+//graficas
 import { ChartModule } from "angular2-highcharts";
 import * as highcharts from 'Highcharts';
+
+//obtener valor sensores
+import { EmpService } from "../providers/emp-service";
+
 
 @NgModule({
   declarations: [
@@ -42,7 +50,8 @@ import * as highcharts from 'Highcharts';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    ChartModule.forRoot(highcharts)
+    ChartModule.forRoot(highcharts),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,7 +71,8 @@ import * as highcharts from 'Highcharts';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    EmpService
   ]
 })
 export class AppModule {}
