@@ -12,20 +12,17 @@
 
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label color="primary">Temperatura</ion-label>
-      
-    </ion-item>    
-    <ion-item>
-      <ion-label color="danger" >{{temp}}</ion-label>
-    </ion-item>
-  </ion-list>
+<ion-content padding>      
+  <ion-label color="primary">Temperatura</ion-label>
+  <ion-item-divider color="light">
+    <ion-label color="danger" >{{temp}}</ion-label>
+  </ion-item-divider>
+  <br>
 
   <rango-sensor [texto] = "2" [texto2] = "hola" ></rango-sensor>
 
-  <grafica [name_sensor]="Temperatura" [name_var]="Tiempo" [sensor_id]="id_sensor" [unidades] = "minutos">
+  <grafica name_sensor ="Temperatura" name_var="Tiempo" sensor_id="id_sensor" unidades = "minutos" [var]="listaValores">
   </grafica>
+  
 
 </ion-content>

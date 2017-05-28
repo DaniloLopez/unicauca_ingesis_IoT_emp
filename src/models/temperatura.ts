@@ -1,6 +1,6 @@
 export class Temperatura{
-    tem : string;
+    valor : string;
     constructor (public temp: string){
-        this.tem = temp;        
+        this.valor = temp;        
     }
 }

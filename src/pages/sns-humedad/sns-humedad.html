@@ -13,25 +13,16 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label color="primary">Humedad:</ion-label>
-    </ion-item>
-        
-
-    
+<ion-content padding>  
+  <ion-label color="primary">Humedad:</ion-label>    
+      
+  <ion-item-divider color="light">
+    <ion-label color="danger">{{hum}}</ion-label>
+  </ion-item-divider>
+           
   <rango-sensor></rango-sensor>
 
-  <grafica [name_sensor]="Humedad" [name_var]="Tiempo" [sensor_id]="id_sensor" [unidades] = "C">
+  <grafica name_sensor="Humedad" name_var="Tiempo" sensor_id="id_sensor" unidades = "C">
   </grafica>
-  </ion-list>
-
-  <ion-item-group>
-      <ion-item-divider color="light">XML</ion-item-divider>
-      <ion-item *ngFor="let item of xmlItems">
-         {{ item.title }}
-      </ion-item>
-   </ion-item-group>
 
 </ion-content>

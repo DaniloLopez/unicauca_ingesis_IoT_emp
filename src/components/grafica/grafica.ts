@@ -10,6 +10,7 @@ export class Grafica implements OnInit{
   @Input() name_var     : string;
   @Input() sensor_id    : string;
   @Input() unidades     : string;
+  @Input() var          : string;  
   
   datos = [[0, 0], [10, 10], [30, 20], [20, 30], [50, 40],
               [10, 50], [30, 60], [20, 70], [50, 80]]
@@ -17,10 +18,11 @@ export class Grafica implements OnInit{
   chartOptions: any;    
 
   constructor() {    
-    
+    console.log("en componente de graficas" + this.var);    
   }
 
   ngOnInit() {    
+    console.log("en componente de graficas lista valores" + this.var);
     console.log(this.name_sensor);
     this.chartOptions = {
       chart: {

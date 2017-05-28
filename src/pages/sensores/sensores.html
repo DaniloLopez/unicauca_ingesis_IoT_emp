@@ -18,9 +18,18 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item (click) = "irPaginaSensor(1)">Temperatura</ion-item>
-    <ion-item (click) = "irPaginaSensor(2)">Humedad</ion-item>
-    <ion-item (click) = "irPaginaSensor(3)">Flujo de agua</ion-item>
+    <ion-item class="lista" (click) = "irPaginaSensor(1)" margin-right>
+      <ion-icon name="thermometer" color="primary" ></ion-icon>
+      Temperatura
+    </ion-item>
+    <ion-item (click) = "irPaginaSensor(2)" margin-right>
+      <ion-icon name="partly-sunny" color="primary" ></ion-icon>
+      Humedad
+    </ion-item>
+    <ion-item (click) = "irPaginaSensor(3)" margin-right>
+      <ion-icon name="aperture" color="primary" ></ion-icon>
+      Flujo de agua
+      </ion-item>
   </ion-list>  
 
 </ion-content>

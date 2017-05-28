@@ -1,15 +1,38 @@
 <!-- Generated template for the RangoSensor component -->
 <div>
+
+<form [formGroup]= "formRango" (ngSubmit)="actualizar()" novalidate>
   <ion-list>
-    <ion-label color="primary">Rangos permitidos</ion-label>          
     <ion-item>
       <ion-label floating>Minimo</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input formControlName="minimo" type="text"></ion-input>
     </ion-item>
+    <ion-item *ngIf="formRango.get('minimo').errors && formRango.get('minimo').dirty">      
+        <p *ngIf="formRango.get('minimo').hasError('required')">campo requerido</p>
+        <p *ngIf="formRango.get('minimo').hasError('minlength')">Minimo 1 caracteres permitidos</p>
+        <p *ngIf="formRango.get('minimo').hasError('maxlength')">Maximo 2 caracteres permitidos</p>
+        <p *ngIf="formRango.get('minimo').hasError('pattern')">Solo se permiten numeros</p>      
+    </ion-item>
+  
+
     <ion-item>
       <ion-label floating>Maximo</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>      
-  </ion-list>  
+      <ion-input formControlName="maximo" type="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="formRango.get('maximo').errors && formRango.get('maximo').dirty">
+      <p *ngIf="formRango.get('maximo').hasError('required')">Campo requerido</p>
+      <p *ngIf="formRango.get('maximo').hasError('minlength')">Minimo 1 caracteres permitidos</p>
+      <p *ngIf="formRango.get('maximo').hasError('maxlength')">Maximo 2 caracteres permitidos</p>
+      <p *ngIf="formRango.get('maximo').hasError('pattern')">Solo se permiten numeros</p>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button block type="submit" [disabled]="formRango.invalid">Actualizar</button>
+  </div>
+</form>
+
+
+
+
 
 </div>
