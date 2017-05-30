@@ -48,9 +48,9 @@ export class EmpEcaProvider {
     return status;
   }
 
-  putTemperaturaMax(rango : RangoSensorModel) : Observable<Eca>{
+  putTemperaturaMax(valor : number) : Observable<Eca>{
     //return this.http.get(this.ip + "/DeleteEca" + this.osid + "&ecaName=EcaTemperaturaMinima")
-    return this.http.get("http://186.87.66.4/DeleteEca?osid=1519735968&ecaName=EcaTemperaturaMinima")
+    return this.http.get(this.EcaMax1 + valor + this.EcaMax2 )
       .map(this.procesarRespuestaEcaTempMax).catch(this.procesarError);
   }
   private procesarRespuestaEcaTempMax(response : Response){
@@ -73,9 +73,9 @@ export class EmpEcaProvider {
     return status;
   }
 
-  putTemperaturaMin(rango : RangoSensorModel) : Observable<Eca>{
+  putTemperaturaMin(valor : number) : Observable<Eca>{
     //return this.http.get(this.ip + "/DeleteEca" + this.osid + "&ecaName=EcaTemperaturaMinima")
-    return this.http.get("http://186.87.66.4/DeleteEca?osid=1519735968&ecaName=EcaTemperaturaMinima")
+    return this.http.get(this.EcaMin1 + valor + this.EcaMin2)
       .map(this.procesarRespuestaEcaTempMin).catch(this.procesarError);
   }
 
@@ -85,11 +85,8 @@ export class EmpEcaProvider {
     return status;
   }
 
-
-
   private procesarError (){
     return Observable.throw("Error al consumir servicio de la EMP");
   }
 
 }
-

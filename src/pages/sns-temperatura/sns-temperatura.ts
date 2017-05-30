@@ -9,9 +9,10 @@ import { EmpEcaProvider } from "../../providers/emp-eca/emp-eca";
 import { Temperatura } from "../../models/temperatura";
 import { RangoSensorModel } from "../../models/rangoSensor";
 
-import { Http, Response } from '@angular/http';
-
 import { Eca } from "../../models/eca";
+
+//mostrar alert y toast en pantalla
+import { AlertController, ToastController } from "ionic-angular";
 
 @IonicPage()
 @Component({
@@ -35,7 +36,13 @@ export class SnsTemperatura {
   //objeto del rovider empEca para realizar las peticones al servidor
   private ecaService : EmpEcaProvider;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, empService : EmpService, ecaService : EmpEcaProvider) {                
+  //variables para indicar que los ecas fueron exitosos
+  private ecaMax : number;
+  private ecaMin : number;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+              empService : EmpService, ecaService : EmpEcaProvider, 
+              public alertCtrl: AlertController, public toastCtrl: ToastController) {
       //solicita que se realizen las peticiones
       this.ecaService = ecaService;
       this.getTemperatura(empService);
@@ -50,6 +57,7 @@ export class SnsTemperatura {
   }
 
   private getTemperatura( empService : EmpService){          
+      this.mostrarToast('Por favor tenga paciencia, se estan cargando los datos.',3000);
       var i : number = 0;
       //ciclo para solicitar los diez valores de temperatura
       for (i = 0; i< 10; i++){
@@ -148,9 +156,89 @@ export class SnsTemperatura {
       }]
     }  
 
+  }   
+
+  recibirValoresRango(mensaje : RangoSensorModel){    
+    this.mostrarToast('Enviando solicitud. El proceso puede tomar varios segundos.',3000);
+    console.log("recibiendo datos del componente sensor hijo");
+    console.log(mensaje.minimo);
+    console.log(mensaje.maximo);      
+
+    this.ecaService.deleteTemperaturaMax().subscribe(
+      status => 
+        this.eliminarEcaTempMax(status, mensaje.maximo, null),
+        err => this.eliminarEcaTempMax(null, null ,err)
+    )
+
+    this.ecaService.deleteTemperaturaMin().subscribe(
+      status => 
+        this.eliminarEcaTempMin(status, mensaje.minimo, null),
+        err => this.eliminarEcaTempMin(null, null, err)
+    )
+
+    this.verificarEstadoSolicitudEcas();
   }
 
-  //realizar un retrazo para que se de tiempo a la peticion de retornar algo
+  private eliminarEcaTempMax(res : Eca, valor: string, err : string){        
+    if(err){
+      console.log("error en maxima  "  + err );
+      return;
+    }
+    console.log("procesado eliminar temp max");
+    if(res.valor == 200) {
+      this.ecaService.putTemperaturaMax(+valor).subscribe(
+      status => 
+        this.resolverTemperaturaMax(status, null),
+        err => this.resolverTemperaturaMax(null, err)
+      )
+    }  
+  }
+  
+  private eliminarEcaTempMin(res : Eca, valor: string, err : string){    
+    if(err){
+      console.log("error en minima  "  + err );
+      return;
+    }
+    console.log("procesado eliminar temp min");
+    if(res.valor == 200) {
+      this.ecaService.putTemperaturaMin(+valor).subscribe(
+      status => 
+        this.resolverTemperaturaMin(status, null),
+        err => this.resolverTemperaturaMin(null, err)
+      )
+    }      
+  }
+
+  private resolverTemperaturaMax(status : Eca , err: string){
+    console.log("eca temp max realizado");
+    this.ecaMax = 1;
+    this.verificarEstadoSolicitudEcas();
+  }
+
+  private resolverTemperaturaMin(status : Eca, err: string){
+    console.log("eca temp min realizado");
+    this.ecaMin = 1;
+    this.verificarEstadoSolicitudEcas();
+  }
+
+
+  //verifica si se realizaron las solicitudes correctamente
+  private verificarEstadoSolicitudEcas(){
+    if (this.ecaMax == 1 && this.ecaMin == 1){
+      console.log("se realizo solicitud de ecas correctamente");
+      this.mostrarAlert(
+        'Actualización',
+        'La actualización de los valores para los rangos del sensor de temperatura se realizó exitosamente.',
+        'Aceptar');
+    }
+    else{
+      console.log("error en solicitud de ecas");
+    }
+
+  }
+
+
+ //realizar un retrazo para que se de tiempo a la peticion de retornar algo
   wait(ms){
     var start = new Date().getTime();
     var end = start;
@@ -159,48 +247,22 @@ export class SnsTemperatura {
     }
   }
 
-  datosSensor : RangoSensorModel;
-
-  recibirValoresRango(mensaje : RangoSensorModel){    
-    this.datosSensor = mensaje;
-
-    console.log("recibiendo datos del componente sensor hijo");
-    console.log(mensaje.minimo);
-    console.log(mensaje.maximo);      
-
-    this.ecaService.deleteTemperaturaMax().subscribe(
-      status => 
-        this.eliminarEcaTempMax(status, null),
-        err => this.eliminarEcaTempMax(null, err)
-    )   
+  private mostrarToast(msj: string, time: number){
+    let toast = this.toastCtrl.create({
+      message: msj,
+      duration: time,
+      position: 'middle'
+    });
+    toast.present();
   }
 
-  private eliminarEcaTempMax(res : Eca, err : string){
-    let ecaService : EmpEcaProvider;
-    var r = res;
-    if(err){
-      console.log("error en maxima  "  + err );
-    }
-    console.log("procesado eliminar temp");
-    if(res.valor == 200) {
-      this.ecaService.deleteTemperaturaMin().subscribe(
-      status => 
-        this.eliminarEcaTempMin(status, null),
-        err => this.eliminarEcaTempMin(null, err)
-      )
-    }  
+  public mostrarAlert(titulo: string, subtitulo: string, boton: string){
+    let alert  =  this.alertCtrl.create({
+          title: titulo,
+          subTitle: subtitulo, 
+          buttons: [boton]
+      });
+      alert.present();
   }
-  
-  private eliminarEcaTempMin(res : Eca, err : string){
-    if(err){
-      console.log("error en minima  " + err);
-      return;
-    }
-
-    console.log("Resultado peticion eliminar ecas min" + res);
-  }
-
-
-
 
 }
