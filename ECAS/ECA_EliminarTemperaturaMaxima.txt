@@ -1,0 +1,1 @@
+186.87.66.4/DeleteEca?osid=1519735968&ecaName=EcaTemperaturaMaxima

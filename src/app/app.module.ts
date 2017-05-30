@@ -30,6 +30,7 @@ import * as highcharts from 'Highcharts';
 
 //obtener valor sensores
 import { EmpService } from "../providers/emp-service";
+import { EmpEcaProvider } from '../providers/emp-eca/emp-eca';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { EmpService } from "../providers/emp-service";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    EmpService
+    EmpService,
+    EmpEcaProvider
   ]
 })
 export class AppModule {}
