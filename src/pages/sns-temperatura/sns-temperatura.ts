@@ -26,9 +26,7 @@ export class SnsTemperatura {
   //variable auciliar para organizar los datos en el vector de datos
   private cant : number;
   //variable para almacenar el tiempo de retardo
-  private delay : number;
-  //numero de peticones que realiza al servidor
-  private iteraciones : number;
+  private delay : number;  
   //vector que almacena los datos de la grafica
   private datos = [];  
   //vector de opciones para almacenar la configuracion de los graficos
@@ -41,14 +39,13 @@ export class SnsTemperatura {
   private ecaMin : number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              empService : EmpService, ecaService : EmpEcaProvider, 
+              public empService : EmpService, ecaService : EmpEcaProvider, 
               public alertCtrl: AlertController, public toastCtrl: ToastController) {
       //solicita que se realizen las peticiones
       this.ecaService = ecaService;
-      this.getTemperatura(empService);
+      this.getTemperatura();
       this.datos = [];    
-      this.delay = 2000;
-      this.iteraciones = 2;
+      this.delay = 2000;      
   }
 
   //cuando el componente este listo se realizan las operaciones correspondientes
@@ -56,14 +53,19 @@ export class SnsTemperatura {
     console.log('ionViewDidLoad SnsTemperatura  ' + this.datos);        
   }
 
-  private getTemperatura( empService : EmpService){          
+  private actualizar(){
+    this.datos = [];    
+    this.getTemperatura();
+  }
+
+  private getTemperatura(){          
       this.mostrarToast('Por favor tenga paciencia, se estan cargando los datos.',3000);
       var i : number = 0;
       //ciclo para solicitar los diez valores de temperatura
       for (i = 0; i< 10; i++){
         console.log("iteracion " + i);
         //suscribe tiene dos argumentos, uno en caso de exito y otro en caso de error
-        empService.getTemperatura().subscribe(
+        this.empService.getTemperatura().subscribe(
           tempertura => 
             //si la peticion es exitosa envia el dato de temperatura
             this.loadTemperatura(tempertura, null), 

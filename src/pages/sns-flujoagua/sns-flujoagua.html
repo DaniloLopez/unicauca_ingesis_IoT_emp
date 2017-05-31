@@ -12,7 +12,16 @@
 
 
 <ion-content padding>      
-    <ion-item-divider color="light">
-      <ion-label color="danger">{{valor}}</ion-label>
-    </ion-item-divider>
+
+  <ion-label color="primary">Distancia sensor:</ion-label>
+  <ion-item-divider color="light">
+    <ion-label color="danger">{{valor}}</ion-label>
+  </ion-item-divider>
+
+  <ion-card color={{color}}>
+    <ion-card-content>
+      {{mensaje}}
+    </ion-card-content>
+  </ion-card>  
+
 </ion-content>

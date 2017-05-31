@@ -31,6 +31,8 @@ import * as highcharts from 'Highcharts';
 //obtener valor sensores
 import { EmpService } from "../providers/emp-service";
 import { EmpEcaProvider } from '../providers/emp-eca/emp-eca';
+import { ApagarProvider } from '../providers/apagar/apagar';
+import { EmpEcaHumedadProvider } from '../providers/emp-eca-humedad/emp-eca-humedad';
 
 
 @NgModule({
@@ -74,7 +76,9 @@ import { EmpEcaProvider } from '../providers/emp-eca/emp-eca';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EmpService,
-    EmpEcaProvider
+    EmpEcaProvider,
+    ApagarProvider,
+    EmpEcaHumedadProvider
   ]
 })
 export class AppModule {}

@@ -15,8 +15,12 @@
 <ion-content padding>      
   <ion-label color="primary">Temperatura</ion-label>
   <ion-item-divider color="light">
-    <ion-label color="danger" >{{temp}}</ion-label>
+    <ion-label color="danger" >{{temp}}</ion-label>    
   </ion-item-divider>
+  <button ion-button icon-left color="primary" (click)="actualizar()">
+    <ion-icon name="refresh"></ion-icon>
+    Actualizar
+  </button>
   <br>
 
   <rango-sensor [texto] = "2" texto2 = "hola" (notificar)="recibirValoresRango($event)"></rango-sensor>
@@ -24,7 +28,8 @@
   <!--<grafica name_sensor ="Temperatura" name_var="Tiempo" sensor_id="id_sensor" unidades = "minutos" [var]="variable">
   </grafica>-->
 
-  <chart  [options]="chartOptions" type = "chart"></chart>  
+  <ion-label color="primary">Grafica:</ion-label>    
+  <chart  [options]="chartOptions" type = "chart"></chart>
   
 
 </ion-content>

@@ -17,12 +17,16 @@
   <ion-label color="primary">Humedad:</ion-label>    
       
   <ion-item-divider color="light">
-    <ion-label color="danger">{{hum}}</ion-label>
+    <ion-label color="danger">{{hum}}</ion-label>    
   </ion-item-divider>
+  <button ion-button icon-left color="primary" (click)="actualizar()">
+    <ion-icon name="refresh"></ion-icon>
+    Actualizar
+  </button>
            
-  <rango-sensor></rango-sensor>
+  <rango-sensor [texto] = "2" texto2 = "hola" (notificar)="recibirValoresRango($event)"></rango-sensor>  
 
-  <grafica name_sensor="Humedad" name_var="Tiempo" sensor_id="id_sensor" unidades = "C">
-  </grafica>
+  <ion-label color="primary">Grafica:</ion-label>    
+  <chart  [options]="chartOptions" type = "chart"></chart>  
 
 </ion-content>

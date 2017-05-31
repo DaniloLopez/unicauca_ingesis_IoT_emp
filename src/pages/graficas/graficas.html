@@ -17,5 +17,35 @@
 
 
 <ion-content padding>
+
+  <ion-card color = "danger">
+    <ion-card-header>
+      Temperatura
+    </ion-card-header>
+
+    <ion-card-content>
+      <chart  [options]="chartOptionsTem" type = "chart"></chart>
+    </ion-card-content>
+  </ion-card>
+
+  
+  <ion-card color="primary">
+    <ion-card-header>
+      Humedad
+    </ion-card-header>
+
+    <ion-card-content>
+      <chart  [options]="chartOptionsHum" type = "chart"></chart>
+    </ion-card-content>
+  </ion-card>  
+
+  <button ion-button icon-left full color="primary" (click)="actualizar()">
+    <ion-icon name="refresh"></ion-icon>
+    Actualizar
+  </button>
+  <button ion-button icon-left full color="primary" (click)="descargar()">
+    <ion-icon name="download"></ion-icon>
+    Descargar
+  </button>   
   
 </ion-content>
