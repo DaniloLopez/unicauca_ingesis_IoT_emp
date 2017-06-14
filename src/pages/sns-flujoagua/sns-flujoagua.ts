@@ -41,7 +41,7 @@ export class SnsFlujoagua {
     }
     this.valor = flujo.distancia;  
     var aux = parseFloat(this.valor);
-    if (aux < 5.00){
+    if (aux < 10.00){
       this.mensaje = "Flujo de agua activo"    
       this.color = "secondary";
     }

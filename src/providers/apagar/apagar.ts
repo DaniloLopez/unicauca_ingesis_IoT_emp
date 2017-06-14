@@ -15,7 +15,7 @@ export class ApagarProvider {
   }
 
   public apagarEstacion(): Observable<Encendido> {
-    return this.http.get("http://186.87.66.4/SetDatastream?osid=1519735968&idDataStream=Relay&comando=off")
+    return this.http.get("http://192.168.0.104/SetDatastream?osid=1519735968&idDataStream=Relay&comando=off")
       .map(this.resolverPeticionOff)
       .catch(this.procesarError)
   }
@@ -31,7 +31,7 @@ export class ApagarProvider {
   }
 
   public encenderEstacion(): Observable<Encendido> {
-    return this.http.get("http://186.87.66.4/SetDatastream?osid=1519735968&idDataStream=Relay&comando=on")
+    return this.http.get("http://192.168.0.104/SetDatastream?osid=1519735968&idDataStream=Relay&comando=on")
       .map(this.resolverPeticionOn)
       .catch(this.procesarError)
   }
@@ -56,7 +56,7 @@ export class ApagarProvider {
 
 
   public encenderEcaTempMax(): Observable<Encendido> {
-    return this.http.get("http://186.87.66.4/SetEcaState?osid=1519735968&nombreECA=EcaTemperaturaMaxima&comando=on")
+    return this.http.get("http://192.168.0.104/SetEcaState?osid=1519735968&nombreECA=EcaTemperaturaMaxima&comando=on")
       .map(this.resolverTempMax)
       .catch(this.procesarError)
   }
@@ -70,7 +70,7 @@ export class ApagarProvider {
   }
 
   public encenderEcaTempMin(): Observable<Encendido> {
-    return this.http.get("http://186.87.66.4/SetEcaState?osid=1519735968&nombreECA=EcaTemperaturaMinima&comando=on")
+    return this.http.get("http://192.168.0.104/SetEcaState?osid=1519735968&nombreECA=EcaTemperaturaMinima&comando=on")
       .map(this.resolverTempMin)
       .catch(this.procesarError)
   }
@@ -90,7 +90,7 @@ export class ApagarProvider {
 
 
   public encenderEcaHumMax(): Observable<Encendido> {
-    return this.http.get("http://186.87.66.4/SetEcaState?osid=1519735968&nombreECA=EcaHumedadMaxima&comando=on")
+    return this.http.get("http://192.168.0.104/SetEcaState?osid=1519735968&nombreECA=EcaHumedadMaxima&comando=on")
       .map(this.resolverHumMax)
       .catch(this.procesarError)
   }
@@ -104,7 +104,7 @@ export class ApagarProvider {
   }
 
   public encenderEcaHumMin(): Observable<Encendido> {
-    return this.http.get("http://186.87.66.4/SetEcaState?osid=1519735968&nombreECA=EcaHumedadMinima&comando=on")
+    return this.http.get("http://192.168.0.104/SetEcaState?osid=1519735968&nombreECA=EcaHumedadMinima&comando=on")
       .map(this.resolverHumMin)
       .catch(this.procesarError)
   }

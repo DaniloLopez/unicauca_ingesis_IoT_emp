@@ -26,7 +26,7 @@ export class EmpService {
   constructor(public http: Http) {
     console.log('Hello EmpService Provider');        
     this.osid = "?osid=1519735968"
-    this.ip = "186.87.66.4"
+    this.ip = "192.168.0.104"
   }  
 
   getTemperatura(): Observable<Temperatura>{

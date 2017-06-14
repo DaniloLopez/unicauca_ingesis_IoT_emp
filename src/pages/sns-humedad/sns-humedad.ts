@@ -166,7 +166,7 @@ private loadHumedad(humedad: Humedad, err: string){
     this.mostrarToast('Enviando solicitud. El proceso puede tomar varios segundos.',3000);
     console.log("recibiendo datos del componente sensor hijo");
     console.log(mensaje.minimo);
-    console.log(mensaje.maximo);      
+    console.log(mensaje.maximo);
 
     this.ecaService.deleteHumedadMax().subscribe(
       status => 

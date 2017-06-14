@@ -50,7 +50,9 @@ export class Graficas {
               public empService : EmpService, ecaService : EmpEcaProvider, 
               public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.datosTemp = [];        
-    this.datosHum = [];  
+    this.datosHum = [];
+    this.delayHum = 2000;
+    this.delayTemp = 2000;  
     this.getTemperatura();
     this.getHumedad();
   }
