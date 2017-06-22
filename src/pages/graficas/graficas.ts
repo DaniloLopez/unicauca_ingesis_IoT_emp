@@ -296,5 +296,11 @@ private loadHumedad(humedad: Humedad, err: string){
       alert.present();
   }
 
+  private descargar(){
+    this.chartOptionsTem.exportChart({
+        type: 'application/pdf',
+        filename: 'my-pdf'
+    });
+  }  
 
 }
